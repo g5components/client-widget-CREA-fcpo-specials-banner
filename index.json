@@ -1,7 +1,7 @@
 {
   "name": "Featured Content Pop Out",
   "beta": true,
-  "widget_id": 57,
+
   "widget_type": null,
   "summary": "Featured Content Pop Out that can have multiple widgets inside of it.",
   "liquid": true,
@@ -48,8 +48,56 @@
       "default_value": "0"
     },
     {
+      "name": "reveal_btn_horizontal_offset",
+      "default_value": "0"
+    },
+    {
       "name": "reveal_btn_offset_unit",
       "default_value": "px"
+    },
+    {
+      "name": "reveal_btn_padding",
+      "default_value": ""
+    },
+    {
+      "name": "close_btn_horz_position",
+      "default_value": ""
+    },
+    {
+      "name": "banner_shown_by_default",
+      "default_value": "false"
+    },
+    {
+      "name": "banner_min_height",
+      "default_value": ""
+    },
+    {
+      "name": "banner_vertical_offset",
+      "default_value": ""
+    },
+    {
+      "name": "banner_content_width",
+      "default_value": ""
+    },
+    {
+      "name": "banner_top_padding",
+      "default_value": "50px"
+    },
+    {
+      "name": "banner_content_flexboxify",
+      "default_value": "false"
+    },
+    {
+      "name": "inline_fcpo_to_dom",
+      "default_value": "false"
+    },
+    {
+      "name": "banner_content_mobile_breakpoint",
+      "default_value": ""
+    },
+    {
+      "name": "banner_mobile_content_center_align",
+      "default_value": "false"
     },
     {
       "name": "reveal_btn_label",

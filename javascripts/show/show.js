@@ -38,6 +38,11 @@ class FeaturedContentPopOutWidget {
     this.setBackgroundImage();
     this.setListeners();
 
+    if (this.configs.bannerShownByDefault) {
+      this.widget.find('.featured-content-pop-out-aside').toggleClass('open');
+      this.widget.find('.reveal-btn').addClass('hidden');
+    }
+
     if (this.configs.featuredContentPopOutType === 'auto' && !this.isAutoRevealTimerSet()) {
       this.setAutoReveal();
     }
@@ -165,6 +170,7 @@ class FeaturedContentPopOutWidget {
     this.widget.find('.featured-content-pop-out-aside, .featured-content-pop-out-overlay').toggleClass('open');
     this.setBgEffect();
     this.setBgScrolling();
+    this.setRevealBtnVisibility();
   }
 
   setBackgroundImage() {
@@ -181,6 +187,12 @@ class FeaturedContentPopOutWidget {
   setBgScrolling() {
     if (this.configs.bgScrolling === 'false') {
       $('html').toggleClass('sc-no-scroll');
+    }
+  }
+
+  setRevealBtnVisibility() {
+    if ((this.configs.bgOverlayOpacity !== "100%") ||  (this.configs.bgColorOpacity !== "100%"))  {
+      this.widget.find('.reveal-btn').toggleClass('hidden');
     }
   }
 

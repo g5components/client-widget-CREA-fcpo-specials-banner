@@ -89,14 +89,52 @@
             <!-- Button vertical offset -->
             {{ widget.reveal_btn_offset | edit_integer_field: "Button Vertical Offset", "0", "value_or_default", "", -10000, 10000 }}
 
+            <!-- Button horizontal offset -->
+            {{ widget.reveal_btn_horizontal_offset | edit_integer_field: "Button Horizontal Offset", "0", "value_or_default", "", -10000, 10000 }}
+
             <!-- Button vertical offset unit type -->
             {{ widget.reveal_btn_offset_unit | edit_select_field: "Button vertical offset unit type", reveal_btn_offset_unit_opts, "value_or_default" }}
+
+            <!-- Button Custom Padding -->
+            {{ widget.reveal_btn_padding | edit_text_field: "Button Custom padding (Shorthand syntax: 10px 20px)", "", "value" }}
 
             <!-- Button Horizontal Position -->
             {{ widget.reveal_btn_position_x | edit_select_field: "Button Horizontal Position", position_x_opts, "value_or_default" }}
 
             <!-- Button text & icon orientation -->
             {{ widget.reveal_btn_text_icon_orientation | edit_select_field: "Button text & icon orientation", reveal_btn_text_icon_orientation_opts, "value_or_default" }}
+
+            <!-- Close Button horz position -->
+            {{ widget.close_btn_horz_position | edit_text_field: "Close Button: Horizontal position offset", "", "value" }}
+          </fieldset>
+          <fieldset class="button-style-options">
+            <legend>Banner / Pop Out Styles</legend>
+            <!-- Banner Show By Default? -->
+            {{ widget.banner_shown_by_default | edit_radio_field: "Show Banner By Default", disabled_opts, "value_or_default" }}
+
+            <!-- Banner Min Height -->
+            {{ widget.banner_min_height | edit_text_field: "Banner Min Height, px, em, % (default is 100%)", "", "value" }}
+
+            <!-- Banner Vertical Offset -->
+            {{ widget.banner_vertical_offset | edit_text_field: "Vertical Offset, px, em, %", "", "value" }}
+
+            <!-- Banner Content Width -->
+            {{ widget.banner_content_width | edit_text_field: "Banner Content Width, px, em, %", "", "value" }}
+
+            <!-- Banner Top Padding -->
+            {{ widget.banner_top_padding | edit_text_field: "Banner Top Padding, px, em, %", "", "value_or_default" }}
+
+            <!-- Banner Show By Default? -->
+            {{ widget.banner_content_flexboxify | edit_radio_field: "Use Flexbox for FCPO interior Content", disabled_opts, "value_or_default" }}
+
+            {{ widget.inline_fcpo_to_dom | edit_radio_field: "Inline Banner / Button into DOM for scrolling", disabled_opts, "value_or_default" }}
+
+            <!-- Banner Content Mobile Breakpoint -->
+            {{ widget.banner_content_mobile_breakpoint | edit_text_field: "Banner Mobile Breakpoint (stacks one column), px, em, %", "", "value_or_default" }}
+
+            <!-- Banner Mobile alignment -->
+            {{ widget.banner_mobile_content_center_align | edit_radio_field: "Banner Content - Center when mobile?", disabled_opts, "value_or_default"  }}
+
           </fieldset>
         </div>
 
