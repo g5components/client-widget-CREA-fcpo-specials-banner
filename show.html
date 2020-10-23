@@ -1,0 +1,194 @@
+{% capture widgetId %}featured-content-pop-out-{{ widget.id }}{% endcapture %}
+
+<div class="featured-content-pop-out widget {{widgetId}}" id="{{widgetId}}">
+
+  <script class="config" type="application/json">
+    {
+      "widgetId": "{{ widgetId }}",
+      "backgroundImageURL": "{{widget.bg_image.value}}",
+      "bgColor": "{{ widget.bg_color.value_or_default }}",
+      "bgColorOpacity": "{{ widget.bg_color_opacity.value_or_default }}",
+      "bgEffect": "{{ widget.bg_effect.value_or_default }}",
+      "bgEffectOverlayColor": "{{ widget.bg_effect_overlay_color.value_or_default }}",
+      "bgEffectOverlayOpacity": "{{ widget.bg_effect_overlay_opacity.value_or_default }}",
+      "bgOverlayColor": "{{widget.bg_overlay_color.value_or_default_parsed}}",
+      "bgOverlayOpacity": "{{widget.bg_overlay_opacity.value_or_default}}",
+      "bgScrolling": "{{ widget.bg_scrolling.value_or_default }}",
+      "autoRevealType": "{{ widget.auto_reveal_type.value_or_default }}",
+      "autoRevealTimer": "{{ widget.auto_reveal_timer.value_or_default }}",
+      "cookieExpiration": "{{ widget.cookie_exp.value_or_default }}",
+      "autoRevealDelay": "{{ widget.auto_reveal_delay.value_or_default }}",
+      "autoRevealDisableMobile": "{{ widget.auto_reveal_disable_mobile.value_or_default }}",
+      "autoRevealMobileBreakpoint": "{{ widget.auto_reveal_mobile_breakpoint.value_or_default }}",
+      "autoRevealScrollDistance": "{{ widget.auto_reveal_mobile_scroll_distance.value_or_default }}",
+      "startDate": "{{ widget.start_date.value_or_default }}",
+      "endDate": "{{ widget.end_date.value_or_default }}",
+      "timezone": "{{ widget.timezone }}",
+      "customName": "{{widget.custom_name.value_or_default}}",
+      "customNameClass": "{{ widget.custom_name.value_or_default | downcase | replace: ' ', '-' }}",
+      "excludedPages": "{{widget.excluded_pages.value_or_default}}",
+      "featuredContentPopOutType": "{{widget.featured_content_pop_out_type.value_or_default}}"
+    }
+  </script>
+
+  <style>
+    #{{widgetId}} p,
+    #{{widgetId}} h1,
+    #{{widgetId}} h2,
+    #{{widgetId}} h3,
+    #{{widgetId}} h4,
+    #{{widgetId}} h5,
+    #{{widgetId}} h6,
+    #{{widgetId}} li {
+      color: {{widget.text_color.value_or_default}};
+    }
+
+    {% if widget.bg_overlay_color.value != blank %}
+      .{{widgetId}} .featured-content-pop-out-wrapper-overlay {
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        bottom: 0px;
+        left: 0;
+        height: 100%;
+      }
+    {% endif %}
+
+    {% assign position = widget.featured_content_pop_out_position.value_or_default -%}
+    .{{widgetId}} .featured-content-pop-out-aside {
+      background-color: {{widget.bg_color.value_or_default}};
+
+      {%- if widget.container_border_width.value != blank -%}
+        border: solid {{widget.container_border_width.value}} {{widget.container_border_color.value}};
+      {%- endif-%}
+
+      {%- if position == 'modal' %}
+        width: {{ widget.pop_out_modal_width.value_or_default }};
+        height: {{ widget.pop_out_modal_height.value_or_default }};
+        min-height: unset;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      {%- endif-%}
+    }
+
+
+    .{{widgetId}} .featured-content-pop-out-aside.right,
+    .{{widgetId}} .featured-content-pop-out-aside.left {
+      {{position}}: -{{widget.container_width.value_or_default}};
+      width: {{widget.container_width.value_or_default}};
+    }
+
+    .{{widgetId}} .featured-content-pop-out-aside.open {
+      {%- if position == 'left' or position == 'right' -%}
+        {{position}}: 0;
+      {%- else -%}
+        opacity: 1;
+        visibility: visible;
+      {%- endif -%}
+    }
+
+    .{{widgetId}} .featured-content-pop-out-content {
+      padding: {{widget.container_padding.value_or_default}};
+
+      {%- if position == 'modal' -%}
+        display: flex;
+        flex-direction: {{ widget.pop_out_modal_direction.value_or_default }};
+      {%- endif-%}
+    }
+
+    .{{widgetId}} .featured-content-pop-out-content > div[class^="pop-out-row-"] {
+      position: relative;
+      {%- if position == 'left' or position == 'right' -%}
+        margin-bottom: 15px;
+      {%- else -%}
+        {%- if widget.pop_out_modal_direction.value_or_default == 'row' -%}
+          margin-right: 15px;
+        {%- else -%}
+          margin-bottom: 15px;
+        {%- endif -%}
+      {%- endif -%}
+    }
+
+    .{{widgetId}} .close-btn {
+      color: {{widget.close_btn_color.value_or_default}};
+    }
+
+    /* Reveal btn */
+    {%- assign position_y = widget.reveal_btn_position_y.value_or_default -%}
+    {%- assign offset = widget.widget.reveal_btn_offset.value_or_default | append: widget.reveal_btn_offset_unit.value_or_default -%}
+
+    #{{widgetId}} .reveal-btn {
+      {%- if position_y == 'bottom' -%}
+        bottom: calc(20px - ({{offset}}));
+      {%- elsif position_y == 'middle' -%}
+        margin-bottom: {{offset}};
+      {%- else -%}
+        top: calc(20px + {{offset}});
+      {%- endif -%}
+    }
+
+    #{{widgetId}} .reveal-btn-container {
+      border: {{ widget.reveal_btn_border_width.value_or_default }}px solid {{widget.reveal_btn_border_color.value_or_default_parsed}};
+    }
+
+    #{{widgetId}} .reveal-btn-background {
+      background-color: {{ widget.reveal_btn_background_color.value_or_default_parsed }};
+      opacity: {{ widget.reveal_btn_background_opacity.value_or_default }};
+    }
+
+    .reveal-btn:hover .reveal-btn-background {
+      background: {{ widget.reveal_btn_background_color.value_or_default_parsed | darken: '10%';}} !important;
+    }
+
+    .{{widgetId}} .reveal-btn-icon,
+    .{{widgetId}} .reveal-btn-label {
+      color: {{ widget.reveal_btn_text_icon_color.value_or_default_parsed }};
+    }
+  </style>
+
+  {%- if widget.featured_content_pop_out_type.value_or_default == 'button' -%}
+    <div class="reveal-btn {{widget.reveal_btn_position_x.value_or_default}} {{widget.reveal_btn_position_y.value_or_default}} {{widget.reveal_btn_text_icon_orientation.value_or_default}} {% if widget.reveal_btn_label.value == blank %}no-text{% endif %}">
+      <div class="reveal-btn-container icon-{{widget.reveal_btn_icon_placement.value_or_default}}">
+        <div class="reveal-btn-background"></div>
+        <i class="reveal-btn-icon fa {{widget.reveal_btn_icon.value_or_default}}"></i>
+        {%- if widget.reveal_btn_label.value != blank -%}
+          <span class="reveal-btn-label">{{widget.reveal_btn_label.value}}</span>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="featured-content-pop-out-overlay"></div>
+
+  <div class="featured-content-pop-out-aside bg-{{widget.bg_position.value_or_default}} {{position}}">
+    <div class="featured-content-pop-out-wrapper">
+      <div class="featured-content-pop-out-wrapper-overlay"></div>
+      <span class="close-btn" tabindex="0">&times;</span>
+      <div class="featured-content-pop-out-content featured-content-pop-out-{{ widget.row_count.value }}">
+        <div class="pop-out-row-1" id="drop-target-1-row-{{widget.id}}"></div>
+
+        {% if widget.row_count.value != "one" %}
+          <div class="pop-out-row-2" id="drop-target-2-row-{{widget.id}}"></div>
+        {% endif %}
+
+        {% if widget.row_count.best_value == "three" or widget.row_count.best_value == "four" or widget.row_count.best_value == "five" or widget.row_count.best_value == "six" %}
+          <div class="pop-out-row-3" id="drop-target-3-row-{{widget.id}}"></div>
+        {% endif %}
+
+        {% if widget.row_count.best_value == "four" or widget.row_count.best_value == "five" or widget.row_count.best_value == "six" %}
+          <div class="pop-out-row-4" id="drop-target-4-row-{{widget.id}}"></div>
+        {% endif %}
+
+        {% if widget.row_count.best_value == "five" or widget.row_count.best_value == "six" %}
+          <div class="pop-out-row-5" id="drop-target-5-row-{{widget.id}}"></div>
+        {% endif %}
+
+        {% if widget.row_count.best_value == "six" %}
+          <div class="pop-out-row-6" id="drop-target-6-row-{{widget.id}}"></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

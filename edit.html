@@ -1,0 +1,258 @@
+{% assign featured_content_pop_out_type_opts = '{"button":"Button Pinned to Viewport", "auto":"Auto Reveal", "cta":"On-Page CTA Widget"}' %}
+{% assign position_y_opts = '{"top": "Top", "middle": "Middle", "bottom": "Bottom" }' %}
+{% assign position_x_opts = '{"left": "Left", "right": "Right"}' %}
+{% assign pop_out_position_opts = '{"left": "Left", "right": "Right", "modal": "Modal" }' %}
+{% assign modal_direction = '{"row": "Horizontal", "column": "Vertical"}' %}
+{% assign reveal_btn_icon_placement_opts = '{"left": "Left", "above": "Above", "below": "Below", "right": "Right"}' %}
+{% assign reveal_btn_text_icon_orientation_opts = '{"horizontal": "Horizontal", "vertical": "Vertical"}' %}
+{% assign reveal_btn_offset_unit_opts = '{"px": "px", "em": "em"}' %}
+{% assign bg_position_opts = '{"cover": "Cover Row Centered", "cover-top": "Cover Row From Top", "cover-bottom": "Cover Row From Bottom", "centered": "Centered", "tile": "Tile Horizontally and Vertically", "tile-x-top": "Tile Horizontally on Top", "tile-x-bottom": "Tile Horizontally on Bottom", "tile-y-left": "Tile Vertically on Left", "tile-y-right": "Tile Vertically on Right" }' %}
+{% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+{% assign bg_effect_opts = '{"none":"None", "blur":"Blur", "overlay":"Overlay"}' %}
+{% assign auto_reveal_opts = '{"delayed":"Delayed", "exit-intent":"Exit Intent"}' %}
+{% assign auto_reveal_timer_opts = '{"cookie":"Cookie", "user-session":"User Session"}' %}
+{% assign disabled_opts = '{"true": "Yes", "false": "No"}' %}
+
+<form>
+  <div class="column-edit" data-column-id="{{widget.id}}" data-row-id="{{widget.parent_widget_id}}" data-row-name="{{widget.parent_widget_name}}">
+    {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+      <fieldset>
+        <legend>Widgets</legend>
+        <!-- Select Row Count -->
+        {% assign col_layout_opts = '{"one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6"}' %}
+        {{ widget.row_count | edit_select_field: "Number of Widgets", col_layout_opts, "value_or_default", "select-row-count" }}
+
+        <!-- Column Row Widgets -->
+        {{ widget | edit_col_layout_widget_fields }}
+      </fieldset>
+
+      <fieldset class="reveal-method-options">
+
+        <legend>Reveal Method</legend>
+
+        {{ widget.featured_content_pop_out_type | edit_select_field: "Choose a reveal method:", featured_content_pop_out_type_opts, "value_or_default" }}
+
+        <hr>
+
+        <div class="button-reveal-section">
+          <fieldset class="button-content-options">
+            <legend>Button Content</legend>
+
+            <!-- Button Text -->
+            {{ widget.reveal_btn_label | edit_text_field: "Button text (optional)", "", "value_or_default" }}
+
+            <!-- Button icon (required)-->
+            {{ widget.reveal_btn_icon |
+              edit_text_field: "Button icon (required)
+              <div class='button-icon-helper-text'>
+                <div class='title'>Recommendations:</div>
+                fa-star-icon (default)<br />
+                fa-star-line-icon<br />
+                fa-promotions<br />
+                fa-calendar<br />
+                fa-envelope-outline<br />
+                fa-dollar
+                </div>",
+              "custom icon name", "value_or_default", "", true
+            }}
+
+            <!-- Icon placement in relation to button text -->
+            {{ widget.reveal_btn_icon_placement | edit_select_field: "Icon placement in relation to button text", reveal_btn_icon_placement_opts, "value_or_default" }}
+          </fieldset>
+
+          <fieldset class="button-style-options">
+            <legend>Button Styles</legend>
+
+            <!-- Button Background Color -->
+            {{ widget.reveal_btn_background_color | edit_color_field: "Button Background Color", "theme_tertiary_color", "value_or_default", "", true}}
+
+            <!-- Button Background Color -->
+            {{ widget.reveal_btn_background_opacity | edit_number_field: "Button Background Opacity", "1", "value_or_default", "", 0, 1 }}
+
+            <!-- Button Text & Icon Color -->
+            {{ widget.reveal_btn_text_icon_color | edit_color_field: "Button Text & Icon Color", "theme_primary_color", "value_or_default", "", true}}
+
+            <!-- Button Border Width (0 = transparent) -->
+            {{ widget.reveal_btn_border_width | edit_integer_field: "Button Border Width (0 = transparent)", "0", "value_or_default", "", 0, 100}}
+
+            <!-- Button Border Color -->
+            {{ widget.reveal_btn_border_color | edit_color_field: "Button Border Color", "theme_primary_color", "value_or_default", "", true }}
+          </fieldset>
+
+          <fieldset class="button-location-options">
+            <legend>Button Location</legend>
+
+            <!-- Button Vertical Position -->
+            {{ widget.reveal_btn_position_y | edit_select_field: "Button Vertical Position", position_y_opts, "value_or_default" }}
+
+            <!-- Button vertical offset -->
+            {{ widget.reveal_btn_offset | edit_integer_field: "Button Vertical Offset", "0", "value_or_default", "", -10000, 10000 }}
+
+            <!-- Button vertical offset unit type -->
+            {{ widget.reveal_btn_offset_unit | edit_select_field: "Button vertical offset unit type", reveal_btn_offset_unit_opts, "value_or_default" }}
+
+            <!-- Button Horizontal Position -->
+            {{ widget.reveal_btn_position_x | edit_select_field: "Button Horizontal Position", position_x_opts, "value_or_default" }}
+
+            <!-- Button text & icon orientation -->
+            {{ widget.reveal_btn_text_icon_orientation | edit_select_field: "Button text & icon orientation", reveal_btn_text_icon_orientation_opts, "value_or_default" }}
+          </fieldset>
+        </div>
+
+        <div class="auto-reveal-section">
+
+          <div class="form-field-row">
+            {{ widget.auto_reveal_timer | edit_select_field: "Timer Type", auto_reveal_timer_opts, "value_or_default" }}
+
+            {{ widget.cookie_exp | edit_integer_field: "Cookie expiration (in hours)", "24", "value_or_default", "", 1, 10000 }}
+          </div>
+
+          <div class="form-field-row">
+            {{ widget.auto_reveal_type | edit_select_field: "Auto Reveal Type", auto_reveal_opts, "value_or_default" }}
+            <div class="auto-reveal-delay-config">
+              {{ widget.auto_reveal_delay | edit_integer_field: "Delay to reveal the container (in seconds)", "10", "value_or_default", "", 1, 10000 }}
+            </div>
+          </div>
+          <div class="form-field-row auto-reveal-delay-config">
+            {{ widget.auto_reveal_mobile_breakpoint | edit_integer_field: "Mobile Breakpoint (in px)", "640", "value_or_default", "", 1, 100000 }}
+
+            {{ widget.auto_reveal_disable_mobile | edit_toggle_field: "Disable on mobile", "value_or_default" }}
+            <div class="form-field-row auto-reveal-mobile-config">
+              {{ widget.auto_reveal_mobile_scroll_distance | edit_integer_field: "Scroll distance to reveal pop-out on mobile (in %)", "50", "value_or_default", "", 1, 10000 }}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="cta-reveal-section">
+          <div>
+            <p>Configure the pop-out reveal within the chosen CTA widget</p>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Featured Content Pop Out active dates (optional)</legend>
+
+        {{ widget.start_date | edit_datepicker_field: "Start Date"}}
+
+        {{ widget.end_date | edit_datepicker_field: "End Date"}}
+
+      </fieldset>
+
+      <div class="form-field-row">
+
+        <!-- Content Stripe Custom Name -->
+        {{ widget.custom_name | edit_text_field: "Custom FCPO Name (Use To Link To CTAs)", "Featured Content Pop Out", "value", "", false, 80 }}
+
+        <!-- Excluded Pages -->
+        <!-- Backend will also accept a comma separated string from a text input if this starts acting weird -->
+        {{ widget.excluded_pages | edit_page_multi_select_field: "Excluded Pages", "value_or_default" }}
+
+        <!-- Featured Content Pop Out Enabled -->
+        {{ widget.disabled | edit_radio_field: "Hide FCPO?", disabled_opts, "value_or_default" }}
+
+      </div>
+
+    {{ widget | end_tab }}
+
+    {{ widget | start_tab: "fa fa-tint", "Styles" }}
+      <div>
+
+        <!-- Select Featured Content Pop Out Position -->
+        {{ widget.featured_content_pop_out_position | edit_select_field: "Pop Out Position", pop_out_position_opts, "value_or_default" }}
+
+        {{ widget.bg_scrolling | edit_toggle_field: "Enable Body Scrolling", "value_or_default" }}
+
+        <fieldset class="form-modal-config">
+          <legend>Modal Configuration</legend>
+          <!-- Select Featured Content Pop Out Position -->
+
+          {{ widget.pop_out_modal_width | edit_text_field: "Modal Width (em, px, %)", "", "value_or_default" }}
+
+          {{ widget.pop_out_modal_height | edit_text_field: "Modal Height (em, px, %)", "", "value_or_default" }}
+
+          {{ widget.pop_out_modal_direction | edit_select_field: "Modal Direction", modal_direction, "value_or_default" }}
+
+        </fieldset>
+
+        <fieldset class="row-bg-image">
+          <legend>Background</legend>
+
+          <!-- Featured Content Pop Out Background Image (Optional) -->
+          {{ widget.bg_image | edit_image_field: "FCPO Background Image", "", "value_or_default", "", "featured-content-pop-out" }}
+          <div class="col s5">
+            {{ widget.cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+
+          </div>
+
+          <!-- Select Image Layout -->
+          {{ widget.bg_position | edit_select_field: "Image Position", bg_position_opts, "value_or_default" }}
+
+          <div class="form-field-row">
+              {{ widget.bg_color | edit_color_field: "Background Color", "example: #fff", "value_or_default" }}
+
+              {{ widget.bg_color_opacity | edit_text_field: "Background Opacity", "example: .3 or 30%", "value_or_default"}}
+          </div>
+
+          <div class="form-field-row">
+            {{ widget.bg_overlay_color | edit_color_field: "Background Overlay Color", "example: #fff" }}
+
+            {{ widget.bg_overlay_opacity | edit_text_field: "Background Overlay Opacity", "example: .3 or 30%", "value_or_default"}}
+          </div>
+
+          <div class="col s5">
+            {{ widget.bg_effect | edit_radio_field: "Background Effect", bg_effect_opts, "value_or_default" }}
+          </div>
+          <div class="bg-effect-overlay">
+            <div class="col s2 offset-s1">
+              {{ widget.bg_effect_overlay_color | edit_color_field: "Overlay Color", "example: #000", "value_or_default" }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.bg_effect_overlay_opacity | edit_text_field: "Effect Opacity", "example: .3 or 30%", "value_or_default"}}
+            </div>
+          </div>
+
+        </fieldset>
+
+        <fieldset>
+          <legend>Colors</legend>
+            {{ widget.text_color | edit_color_field: "Text Color", "example: #000", "value_or_default" }}
+
+            {{ widget.icon_color | edit_color_field: "Icon Color", "example: #000", "value_or_default" }}
+
+            {{ widget.close_btn_color | edit_color_field: "Close Button Color", "example: #000", "value_or_default" }}
+        </fieldset>
+
+        <fieldset>
+          <legend>Container</legend>
+          {{ widget.container_width | edit_text_field: "Custom FCPO Width (em, px, %)", "example: 250px", "value_or_default"}}
+
+          {{ widget.container_padding | edit_text_field: "Custom Padding (em, px, %)", "example: 2em", "value_or_default"}}
+
+          {{ widget.container_border_width | edit_text_field: "Border Width (em, px)", "example: 1em", "value_or_default"}}
+
+          {{ widget.container_border_color | edit_color_field: "Border Color", "example: #000", "value_or_default"}}
+
+        </fieldset>
+
+      </div>
+
+    {{ widget | end_tab: true }}
+
+  </div>
+
+</form>

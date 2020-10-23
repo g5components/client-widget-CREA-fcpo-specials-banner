@@ -1,0 +1,299 @@
+{
+  "name": "Featured Content Pop Out",
+  "beta": true,
+  "widget_id": 57,
+  "widget_type": null,
+  "summary": "Featured Content Pop Out that can have multiple widgets inside of it.",
+  "liquid": true,
+  "widget_popover": "",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [
+    "edit-draggable.js",
+    "edit-layout.js",
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js",
+    "edit-pages-multiselect.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-layout.css",
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "featured_content_pop_out_position",
+      "default_value": "left"
+    },
+    {
+      "name": "reveal_btn_icon",
+      "default_value": "fa-star-icon"
+    },
+    {
+      "name": "reveal_btn_position_x",
+      "default_value": "right"
+    },
+    {
+      "name": "reveal_btn_position_y",
+      "default_value": "bottom"
+    },
+    {
+      "name": "reveal_btn_offset",
+      "default_value": "0"
+    },
+    {
+      "name": "reveal_btn_offset_unit",
+      "default_value": "px"
+    },
+    {
+      "name": "reveal_btn_label",
+      "default_value": ""
+    },
+    {
+      "name": "reveal_btn_icon_placement",
+      "default_value": "left"
+    },
+    {
+      "name": "reveal_btn_text_icon_orientation",
+      "default_value": "horizontal"
+    },
+    {
+      "name": "reveal_btn_background_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "reveal_btn_background_opacity",
+      "default_value": 1
+    },
+    {
+      "name": "reveal_btn_text_icon_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "reveal_btn_border_width",
+      "default_value": 0
+    },
+    {
+      "name": "reveal_btn_border_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "row_count",
+      "default_value": "one"
+    },
+    {
+      "name": "row_1_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_1_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_2_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_2_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_3_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_3_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_4_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_4_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_5_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_5_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_6_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_6_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "bg_image",
+      "default": ""
+    },
+    {
+      "name": "bg_position",
+      "default": "cover"
+    },
+    {
+      "name": "bg_behavior",
+      "default": "normal"
+    },
+    {
+      "name": "bg_overlay_color",
+      "default": ""
+    },
+    {
+      "name": "bg_overlay_opacity",
+      "default": "50%"
+    },
+    {
+      "name": "bg_color_opacity",
+      "default_value": "100%"
+    },
+    {
+      "name": "bg_effect",
+      "default_value": "none"
+    },
+    {
+      "name": "bg_effect_overlay_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "bg_effect_overlay_opacity",
+      "default_value": "60%"
+    },
+    {
+      "name": "text_color",
+      "default_value": "#000"
+    },
+    {
+      "name": "icon_color",
+      "default_value": "#000"
+    },
+    {
+      "name": "close_btn_color",
+      "default_value": "#000"
+    },
+    {
+      "name": "container_padding",
+      "default_value": "1em"
+    },
+    {
+      "name": "container_border_width",
+      "default_value": ""
+    },
+    {
+      "name": "container_border_color",
+      "default_value": ""
+    },
+    {
+      "name": "container_width",
+      "default_value": "360px"
+    },
+    {
+      "name": "cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "cropping_height",
+      "default_value": "1100"
+    },
+    {
+      "name": "cropping_width",
+      "default_value": "2000"
+    },
+    {
+      "name": "excluded_pages",
+      "default_value": ""
+    },
+    {
+      "name": "pop_out_modal_width",
+      "default_value": "65%"
+    },
+    {
+      "name": "pop_out_modal_height",
+      "default_value": "65%"
+    },
+    {
+      "name": "pop_out_modal_direction",
+      "default_value": "column"
+    },
+    {
+      "name": "auto_reveal",
+      "default_value": "false"
+    },
+    {
+      "name": "auto_reveal_type",
+      "default_value": "delayed"
+    },
+    {
+      "name": "auto_reveal_delay",
+      "default_value": "60"
+    },
+    {
+      "name": "auto_reveal_timer",
+      "default_value": "cookie"
+    },
+    {
+      "name": "auto_reveal_disable_mobile",
+      "default_value": "true"
+    },
+    {
+      "name": "auto_reveal_mobile_breakpoint",
+      "default_value": "640px"
+    },
+    {
+      "name": "auto_reveal_mobile_scroll_distance",
+      "default_value": "50%"
+    },
+    {
+      "name": "bg_scrolling",
+      "default_value": "false"
+    },
+    {
+      "name": "bg_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "cookie_exp",
+      "default_value": "24"
+    },
+    {
+      "name": "disabled",
+      "default_value": "false"
+    },
+    {
+      "name": "start_date",
+      "default_value": ""
+    },
+    {
+      "name": "end_date",
+      "default_value": ""
+    },
+    {
+      "name": "ad_content",
+      "default_value": "false"
+    },
+    {
+      "name": "ad_param",
+      "default_value": ""
+    },
+    {
+      "name": "custom_name",
+      "default_value": ""
+    },
+    {
+      "name": "featured_content_pop_out_type",
+      "default_value": "button"
+    }
+  ]
+}

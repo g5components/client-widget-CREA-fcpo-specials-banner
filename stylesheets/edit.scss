@@ -1,0 +1,141 @@
+// ********************************************
+//
+//  Featured Content Pop Out Edit SCSS
+//
+// ********************************************
+
+/*------------------------------------------------------------------
+[Table of contents]
+1. General Styles
+1.1. Button pinned to viewport options
+2. Configs Tab
+3. Styles Tab
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[ 1. General Styles ]
+*/
+
+input {
+  &:not([type]),
+  &[type=date],
+  &[type=datetime-local],
+  &[type=datetime],
+  &[type=email],
+  &[type=number],
+  &[type=password],
+  &[type=search],
+  &[type=tel],
+  &[type=text],
+  &[type=time],
+  &[type=url] {
+    box-sizing: border-box;
+  }
+}
+
+div.form-field.form-field- {
+  &bg-color,
+  &bg-color-opacity,
+  &bg-behavior,
+  &bg-overlay-color,
+  &bg-overlay-opacity,
+  &auto-reveal-delay,
+  &pop-out-modal-width,
+  &pop-out-modal-height,
+  &cookie-exp,
+  &start-date,
+  &end-date,
+  &auto-reveal-type,
+  &auto-reveal-timer{
+    display: block;
+    float: left;
+    margin: 0 !important;
+    width: 49.5% !important;
+  }
+
+  &bg-color-opacity,
+  &bg-overlay-opacity,
+  &pop-out-modal-height,
+  &auto-reveal-delay,
+  &cookie-exp,
+  &end-date {
+    margin-left: 1% !important;
+  }
+
+  &featured-content-pop-out-position,
+  &auto-reveal-mobile-breakpoint,
+  &auto-reveal-mobile-scroll-distance,
+  &ad-param {
+    margin: 0 !important;
+  }
+
+  &bg-image {
+    margin-top: 20px;
+  }
+
+  &bg-scrolling {
+    margin-bottom: 20px;
+  }
+
+}
+
+/*------------------------------------------------------------------
+[1.1. Button pinned to viewport options]
+*/
+
+.button-reveal-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .form-field-reveal-btn-offset {
+    width: 100%;
+  }
+
+  .button-icon-helper-text {
+    .title {
+      margin-left: -10px;
+    }
+    padding-left: 20px;
+  }
+
+  .button-content-options,
+  .button-location-options,
+  .button-style-options {
+    width: calc(50% - 10px);
+    box-sizing: border-box;
+  }
+}
+
+/*------------------------------------------------------------------
+[ 2. Configs Tab ]
+*/
+
+div.form-field.form-field- {
+
+  // Footer
+
+  &custom-name,
+  &excluded-pages,
+  &disabled {
+    float: left;
+  }
+
+  &custom-name {
+    margin-bottom: 0;
+    width: 49%;
+  }
+
+
+  &excluded-pages.input-field {
+    margin: 0 1% 0 0;
+    width: 33%;
+  }
+
+  &disabled.check-field {
+    margin: 0;
+    width: 16%;
+  }
+
+}
