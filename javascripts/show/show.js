@@ -35,7 +35,6 @@ class FeaturedContentPopOutWidget {
   }
 
   initialize() {
-    this.setBackgroundImage();
     this.setListeners();
 
     if (this.configs.bannerShownByDefault) {
@@ -168,14 +167,17 @@ class FeaturedContentPopOutWidget {
 
   toggleFeaturedContentPopOut() {
     this.widget.find('.featured-content-pop-out-aside, .featured-content-pop-out-overlay').toggleClass('open');
+    this.setBackgroundImage();
     this.setBgEffect();
     this.setBgScrolling();
     this.setRevealBtnVisibility();
   }
 
   setBackgroundImage() {
-    if (this.configs.backgroundImageURL !== '') {
-      this.widget.find('.featured-content-pop-out-aside').css('background-image', `url(${this.configs.backgroundImageURL})`);
+    var featuredContentPopOutAside = this.widget.find('.featured-content-pop-out-aside'),
+        backgroundImageURL = this.configs.backgroundImageURL;
+    if (backgroundImageURL !== '' && featuredContentPopOutAside.css('background-image') === 'none') {
+      featuredContentPopOutAside.css('background-image', `url(${backgroundImageURL})`);
     }
   }
 
