@@ -11,8 +11,8 @@ class FeaturedContentPopOutWidget {
   }
 
   shouldRenderWidget() {
-    const startDateTZ = dayjs.tz(`${this.configs.startDate} 00:00`, this.configs.timezone);
-    const endDateTZ = dayjs.tz(`${this.configs.endDate} 23:59`, this.configs.timezone);
+    const startDateTZ = this.configs.startDate ? dayjs.tz(`${this.configs.startDate} 00:00`, this.configs.timezone) : dayjs('invalid');
+    const endDateTZ = this.configs.endDate ? dayjs.tz(`${this.configs.endDate} 23:59`, this.configs.timezone) : dayjs('invalid');
 
     const startDate = new Date(startDateTZ.format());
     const endDate = new Date(endDateTZ.format());
