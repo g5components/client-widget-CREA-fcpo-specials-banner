@@ -60,18 +60,18 @@
     .{{widgetId}} .featured-content-pop-out-aside {
       background-color: {{widget.bg_color.value_or_default_parsed}};
 
-      {%- if widget.container_border_width.value != blank -%}
+      {% if widget.container_border_width.value != blank %}
         border: solid {{widget.container_border_width.value}} {{widget.container_border_color.value}};
-      {%- endif-%}
+      {% endif %}
 
-      {%- if position == 'modal' %}
+      {% if position == 'modal' %}
         width: {{ widget.pop_out_modal_width.value_or_default }};
         height: {{ widget.pop_out_modal_height.value_or_default }};
         min-height: unset;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-      {%- endif-%}
+      {% endif %}
     }
 
     #{{widgetId}} .reveal-btn.hidden{
@@ -167,34 +167,34 @@
     }
 
     .{{widgetId}} .featured-content-pop-out-aside.open {
-      {%- if position == 'left' or position == 'right' -%}
+      {% if position == 'left' or position == 'right' %}
         {{position}}: 0;
-      {%- else -%}
+      {% else %}
         opacity: 1;
         visibility: visible;
-      {%- endif -%}
+      {% endif %}
     }
 
     .{{widgetId}} .featured-content-pop-out-content {
       padding: {{widget.container_padding.value_or_default}};
 
-      {%- if position == 'modal' -%}
+      {% if position == 'modal' %}
         display: flex;
         flex-direction: {{ widget.pop_out_modal_direction.value_or_default }};
-      {%- endif-%}
+      {% endif %}
     }
 
     .{{widgetId}} .featured-content-pop-out-content > div[class^="pop-out-row-"] {
       position: relative;
-      {%- if position == 'left' or position == 'right' -%}
+      {% if position == 'left' or position == 'right' %}
         margin-bottom: 15px;
-      {%- else -%}
-        {%- if widget.pop_out_modal_direction.value_or_default == 'row' -%}
+      {% else %}
+        {% if widget.pop_out_modal_direction.value_or_default == 'row' %}
           margin-right: 15px;
-        {%- else -%}
+        {% else %}
           margin-bottom: 15px;
-        {%- endif -%}
-      {%- endif -%}
+        {% endif %}
+      {% endif %}
     }
 
     .{{widgetId}} .close-btn {
@@ -202,17 +202,17 @@
     }
 
     /* Reveal btn */
-    {%- assign position_y = widget.reveal_btn_position_y.value_or_default -%}
-    {%- assign offset = widget.widget.reveal_btn_offset.value_or_default | append: widget.reveal_btn_offset_unit.value_or_default -%}
+    {% assign position_y = widget.reveal_btn_position_y.value_or_default %}
+    {% assign offset = widget.widget.reveal_btn_offset.value_or_default | append: widget.reveal_btn_offset_unit.value_or_default %}
 
     #{{widgetId}} .reveal-btn {
-      {%- if position_y == 'bottom' -%}
+      {% if position_y == 'bottom' %}
         bottom: calc(20px - ({{offset}}));
-      {%- elsif position_y == 'middle' -%}
+      {% elsif position_y == 'middle' %}
         margin-bottom: {{offset}};
-      {%- else -%}
+      {% else %}
         top: calc(20px + {{offset}});
-      {%- endif -%}
+      {% endif %}
     }
 
     #{{widgetId}} .reveal-btn-container {
@@ -252,17 +252,17 @@
     {% endif %}
   </style>
 
-  {%- if widget.featured_content_pop_out_type.value_or_default == 'button' -%}
+  {% if widget.featured_content_pop_out_type.value_or_default == 'button' %}
     <div class="reveal-btn {{widget.reveal_btn_position_x.value_or_default}} {{widget.reveal_btn_position_y.value_or_default}} {{widget.reveal_btn_text_icon_orientation.value_or_default}} {% if widget.reveal_btn_label.value == blank %}no-text{% endif %}">
       <div class="reveal-btn-container icon-{{widget.reveal_btn_icon_placement.value_or_default}}">
         <div class="reveal-btn-background"></div>
         <i class="reveal-btn-icon fa {{widget.reveal_btn_icon.value_or_default}}"></i>
-        {%- if widget.reveal_btn_label.value != blank -%}
+        {% if widget.reveal_btn_label.value != blank %}
           <span class="reveal-btn-label">{{widget.reveal_btn_label.value}}</span>
-        {%- endif -%}
+        {% endif %}
       </div>
     </div>
-  {%- endif -%}
+  {% endif %}
 
   <div class="featured-content-pop-out-overlay"></div>
 
