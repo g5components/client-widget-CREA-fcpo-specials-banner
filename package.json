@@ -1,0 +1,24 @@
+{
+  "name": "client-widget-crea-fcpo-specials-banner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "npm explore cms-cli -- npm run serve -- --env.outputPath=$(pwd) --env.widgetPath=$(pwd)",
+    "build": "npm explore cms-cli -- npm run build -- --env.outputPath=$(pwd) --env.widgetPath=$(pwd)",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g5components/client-widget-CREA-fcpo-specials-banner.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/g5components/client-widget-CREA-fcpo-specials-banner/issues"
+  },
+  "homepage": "https://github.com/g5components/client-widget-CREA-fcpo-specials-banner#readme",
+  "devDependencies": {
+    "cms-cli": "github:g5search/cms-cli#v1.2.3"
+  }
+}
