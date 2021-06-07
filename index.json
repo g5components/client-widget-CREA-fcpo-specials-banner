@@ -26,6 +26,7 @@
     "apartments",
     "veterinarian"
   ],
+  "aliases": ["Featured Content Pop Out"],
   "page_widget": true,
   "settings": [
     {
