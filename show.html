@@ -1,6 +1,6 @@
-{% capture widgetId %}featured-content-pop-out-{{ widget.id }}{% endcapture %}
+{% capture widgetId %}crea-featured-content-pop-out-{{ widget.id }}{% endcapture %}
 
-<div class="featured-content-pop-out widget {{widgetId}}" id="{{widgetId}}">
+<div class="crea-featured-content-pop-out widget {{widgetId}}" id="{{widgetId}}">
 
   <script class="config" type="application/json">
     {
@@ -92,7 +92,7 @@
     {% endif %}
 
     {% if widget.reveal_btn_horz_position.value_or_default != "" %}
-    #{{widgetId}}.featured-content-pop-out .reveal-btn{
+    #{{widgetId}}.crea-featured-content-pop-out .reveal-btn{
       {{widget.reveal_btn_position_x.value_or_default}}: {{widget.reveal_btn_horizontal_offset.value | append: widget.reveal_btn_offset_unit.value_or_default }};
     }
     {% endif %}
