@@ -34,13 +34,17 @@ class FeaturedContentPopOutWidget {
     return date instanceof Date && !isNaN(date);
   }
 
+  toggleBanner(){
+    this.widget.find('.featured-content-pop-out-aside, .featured-content-pop-out-overlay').toggleClass('open');
+    this.setRevealBtnVisibility();
+  }
+
   initialize() {
     this.setBackgroundImage();
     this.setListeners();
 
     if (this.configs.bannerShownByDefault) {
-      this.widget.find('.featured-content-pop-out-aside').toggleClass('open');
-      this.widget.find('.reveal-btn').addClass('hidden');
+      this.toggleBanner()
     }
 
     if (this.configs.featuredContentPopOutType === 'auto' && !this.isAutoRevealTimerSet()) {
@@ -106,7 +110,7 @@ class FeaturedContentPopOutWidget {
   }
 
   setListeners() {
-    const actionCallClass = !this.configs.customName ? '.featured-content-pop-out' : '.' + this.configs.customNameClass;
+    const actionCallClass = !this.configs.customName ? '.crea-featured-content-pop-out' : '.' + this.configs.customNameClass;
     $('.action-calls a' + actionCallClass)
     .on('click', () => {
       this.toggleFeaturedContentPopOut();
@@ -167,10 +171,9 @@ class FeaturedContentPopOutWidget {
   }
 
   toggleFeaturedContentPopOut() {
-    this.widget.find('.featured-content-pop-out-aside, .featured-content-pop-out-overlay').toggleClass('open');
+    this.toggleBanner()
     this.setBgEffect();
     this.setBgScrolling();
-    this.setRevealBtnVisibility();
   }
 
   setBackgroundImage() {
@@ -263,4 +266,4 @@ class FeaturedContentPopOutWidget {
   }
 }
 
-G5.loadWidgetConfigs('.featured-content-pop-out > .config', FeaturedContentPopOutWidget);
+G5.loadWidgetConfigs('.crea-featured-content-pop-out > .config', FeaturedContentPopOutWidget);
