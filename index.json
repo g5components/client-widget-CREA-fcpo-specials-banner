@@ -1,6 +1,5 @@
 {
   "name": "client-widget-CREA-fcpo-specials-banner",
-  "beta": false,
   "is_layout": true,
   "parent_component_source_uri": "git@github.com:g5components/cms-widget-featured-content-pop-out.git",
   "widget_type": null,
